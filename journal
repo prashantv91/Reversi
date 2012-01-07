@@ -1,0 +1,68 @@
+19.2.2011
+2:51 am
+
+Finally the evolution part seems to work. Without the mutations the set was stagnating and had repetitions. Adding mutations immediately after reproduction fixed that. Tested with 10 members, for 10 generations. Reduced to 9 in the 2nd generation, and remained fixed afterward. From the 8th generation the top three were always the first three. Could be due to the random seed, should try out more. 
+Loses to Zebra with lookahead of 1, but it wasn't supposed to do more than that yet. My school program could beat Zebra at that level.
+
+To do: 
+Make games faster. Very important if larger populations and more generations are to be supported in reasonable time.
+Test with different random seeds, larger population and more generations.
+
+
+20.2.2011
+5:33 pm
+
+Worked with mobility alone non-zero. Tried a number of things. Disabled mutations for now. Using O3 optimisation.
+First, split strategy into blocks of five moves. Seemed to make evolution show non-random results, as was not the case earlier. Why is this?
+In 8 out of 10 cases, weight towards the end was much lesser then the first, as is to be expected.
+Then changed "a(n) = a(n-1)*(1+f)" to "a(n) = a(n-1) + f". It stopped working.
+
+Of course!
+This was happening because of "a(n-1)*(1+f)". It is much more likely to decrease than increase. (Added later: Gambler's Ruin?)
+
+The vector of weights at each move needs to be normalised!!!!!!!!
+
+Tried changing a lot of stuff. Why does the first move's weight stabilise so fast? That's because of a flaw in the mutation. Corrected.
+
+16.4.2011
+11:59 pm
+
+Saw this after a long time.
+Can't believe I wrote this much code back then.
+
+Set it up to run overnight on 10.6.15.136 at 100 initial population, 100 generations.
+Results for 25, 10 obtained, not good.
+Will check tomorrow.
+
+17.4.2011
+2:24 pm
+
+Got a couple of results for 100, 100 today.
+Both were quite weak, lost to Zebra at easiest mode.
+
+SHOULD THE FIRST GENERATION BE INITIALISED PROPERLY AND NOT RANDOMISED?
+Look into Endgame stuff.
+
+Need to automate taking weights from file.
+
+5.10.2011
+11:49 pm
+
+Came back to this after a long time due to stupid heavy semester.
+Reading about genetic algorithms. Didn't want to do it earlier, as I wanted to come up with my own ideas, but perhaps it's alright.
+
+Planning to revamp gen.cpp. Will write it from scratch, but first there seems to be a SEG fault lurking somewhere that needs correcting.
+
+6.10.2011
+1:37 am
+
+Working on gen.cpp.
+Will continue tomorrow.
+
+6.10.2011
+10:29 pm
+
+Was working on this all day.
+Corrected a fatal bug in player.cpp. Hope there are no more.
+Finished basic version of cross over and mutation in gen.cpp. Not good enough, though. Need to improve these a lot, perhaps even change it altogether.
+Should also look into the point put up in caps above.
